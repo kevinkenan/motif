@@ -115,6 +115,10 @@ div.post {
   width: 830px;
 }
 
+div.comment {
+  width: 575px;
+}
+
 .post-meta-data {
   flex: 0 auto;
   order: 2;
