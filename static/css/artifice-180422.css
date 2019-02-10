@@ -116,6 +116,7 @@ div.post {
 }
 
 div.comment {
+  padding-top: 20px;
   width: 575px;
 }
 
