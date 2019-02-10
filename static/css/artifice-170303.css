@@ -1,0 +1,628 @@
+@charset "UTF-8";
+
+html { 
+  font-size: 16px; 
+  background-color: #111;
+  height: 100%;
+}
+
+body {
+  display: block;
+  margin-top: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  height: 100%;
+}
+
+#page {
+  font-family: 'Lora', serif;
+  line-height: 1.6em;
+  color: #111;
+  counter-reset: sidenote-counter; 
+  background-color: #FFFCFF;
+  /*height: 100%;*/
+  min-height: 100%;
+}
+
+#main {
+  position: relative;
+  max-width: 925px; 
+  padding-right: 255px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto;
+  height: 100%;
+  /*min-height: 100%;*/
+  padding-bottom: 7rem;
+}
+
+.header {
+  max-width: 670px;
+  margin: auto;
+  overflow-y: auto;
+}
+
+article {
+  max-width: 670px;
+  margin: auto;
+  /*overflow: hidden;*/
+}
+
+.post {
+  width: 500px;
+  max-width: 500px;
+  float: right;
+}
+
+p, footer, table { 
+  width: 100%;
+  max-width: 500px; 
+}
+
+p, ol, ul { font-size: 1.0rem; }
+
+p { 
+  line-height: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 1.4rem;
+  padding-right: 0;
+  vertical-align: baseline; 
+}
+
+figure {
+  display: block;
+  width: 500px;
+  padding: 0 0 .5rem 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  margin: 0 0 3em 0;
+  margin-left: 0px;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
+img { 
+  width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1.8rem;
+  padding-bottom: .25rem;
+  line-height: 2rem;
+  display: block;
+  font-family: 'Raleway', serif;
+  font-weight: 400;
+}
+
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  counter-reset: sidenote-counter; 
+}
+
+h1 a:link, h1 a:visited,
+h2 a:link, h2 a:visited,
+h3 a:link, h3 a:visited,
+h4 a:link, h4 a:visited,
+h5 a:link, h5 a:visited,
+h6 a:link, h6 a:visited {
+  text-decoration: none;
+}
+
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+  text-decoration: underline;
+}
+
+a:link { 
+  text-decoration: underline;
+}
+
+a:link, a:visited { color: inherit; }
+
+.sidenote, .marginnote { 
+  float: right;
+  clear: right;
+  margin-right: -255px;
+  width: 225px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: .9rem;
+  line-height: 1.15rem;
+  vertical-align: baseline;
+  z-index: 1000; 
+}
+
+blockquote { 
+    width: 420px;
+    margin-left: 40px;
+    /*margin-right: 4%; */
+  }
+
+  blockquote p {
+    width: 420px;
+  }
+
+  blockquote .sidenote, blockquote .marginnote { 
+    margin-right: -295px; 
+    min-width: 225px;
+    text-align: left; 
+  }
+
+
+.sidenote-number { counter-increment: sidenote-counter; }
+
+.sidenote-number:after, .sidenote:before { 
+  content: counter(sidenote-counter) " ";
+  position: relative;
+  vertical-align: baseline; 
+}
+
+.sidenote-number:after { 
+  content: counter(sidenote-counter);
+  font-size: .6rem;
+  top: -0.5rem;
+  left: 0rem; 
+}
+
+.sidenote:before { 
+  content: counter(sidenote-counter) " ";
+  font-size: .6rem;
+  top: -0.5rem; 
+}  
+
+input.margin-toggle { display: none; }
+
+label.sidenote-number { display: inline; }
+
+label.margin-toggle:not(.sidenote-number) { display: none; }
+
+.header h1 { 
+  font-size: 3rem; 
+  font-weight: 700;
+  margin-left: 170px;
+}
+
+.header h1 a {
+  text-decoration: none;
+}
+
+.header h2 { 
+  font-size: 1.9rem;
+  color: #999; 
+  margin-left: 170px;
+}
+
+.post-meta-data {
+  width: 150px;
+  padding-right: 20px;
+  font-size: .7rem;
+  line-height: 1.15rem;
+  float: left;
+  padding-top: 6rem;
+}
+
+.post-end-hr {
+  display: none;
+}
+
+.post-date { 
+  font-size: .9rem;
+  padding-bottom: 1rem; 
+}
+
+.post-meta-data a:link, .post-meta-data a:visited {
+  text-decoration: none;
+}
+
+.post-meta-data a:hover {
+  text-decoration: underline;
+}
+
+
+/*
+All anchors inside the menu should be styled like this.
+*/
+#menu { 
+  font-family: sans-serif; 
+  font-weight: 300;
+}
+
+#menu a {
+  color: #999;
+  border: none;
+  padding: 0.6em 0 0.6em 0.6em;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+#menu .pure-menu ul,
+#menu .pure-menu .menu-item-divided {
+  border-top: 1px solid #333;
+}
+
+.footer {
+  position: relative;
+  max-width: 925; 
+  padding-right: 255px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -6rem;
+  height: 6rem;
+  /*overflow: auto;*/
+  font-family: 'Raleway', serif;
+  background-color: #111;
+}
+
+.footer p {
+  width: 670px;
+  color: #E0E0E0;
+  float: none;
+  margin: auto;
+  height: 100%;
+  padding: 0 0 0 170px;
+  /*vertical-align: middle;*/
+  line-height: 6rem;
+  font-size: 1.8rem;
+  /*margin: 0 auto;*/
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+
+@media (min-width: 601px) and (max-width: 955px) { 
+  #menu, #menuspacer {
+    display: none;
+  }
+
+  #page {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    margin: auto;
+    min-height: 100%;
+  }
+
+  #main { 
+    position: relative;
+    max-width: 95%;
+    width: 95%;
+    padding-right: 0px;
+    margin: auto;
+    overflow: auto;
+    height: 100%;
+    padding-bottom: 7rem;
+  }
+
+  article {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+  }
+  
+  .header {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .post {
+    width: 100%;
+    max-width: 100%;
+    float: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    width: 65%;
+  }
+
+  .header h1 { 
+    margin-left: 0px;
+  }
+  
+  .header h2 { 
+    margin-left: 0px;
+  }
+
+  .post-end-hr {
+    display: block;
+    width: 10%;
+    margin: 0 auto 1.4rem auto;
+    position: relative;
+    padding: 0;
+    /*margin: 8px auto;*/
+    height: 0;
+    /*width: 100%;*/
+    max-height: 0;
+    font-size: 1px;
+    line-height: 0;
+    clear: both;
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  .post-meta-data {
+    display: block;
+    width: 65%;
+    padding-right: 0px;
+    font-size: .7rem;
+    line-height: 1.15rem;
+    padding-right: 35%;
+    float: none;
+    /*
+       margin-left: 0pt;
+     margin-right: 0pt;*/
+    padding-top: 0;
+    padding-bottom: 1rem;
+  }
+  
+  .post-date { 
+    font-size: .9rem;
+    padding-bottom: .7rem; 
+  }
+  
+  p, footer { 
+    width: 65%; 
+    max-width: 100%; 
+  }
+
+  pre.code { width: 55%; }
+
+  ul { 
+    width: 61%; 
+    padding-left: 4%;
+  }
+
+  img { width: 100%; } 
+
+  figure { 
+    max-width: 65%;
+    width: 65%;
+  }
+  
+  figcaption, figure.fullwidth figcaption { 
+    margin-right: 0%;
+    max-width: none; 
+  }
+
+  .sidenote, .marginnote { 
+    width: 45%;
+    margin-right: -50%;
+  }
+
+  blockquote { 
+    width: 61%;
+    margin-left: 4%;
+    /*margin-right: 4%; */
+  }
+
+  blockquote p {
+    width: 92%;
+  }
+
+  blockquote .sidenote, blockquote .marginnote { 
+    /*57%*/
+    margin-right: -66.5%;
+    width: 52%; 
+    min-width: 52%;
+    text-align: left; 
+  }
+
+  .footer {
+    position: relative;
+    width: 100%; 
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -6rem;
+    height: 6rem;
+    /*overflow-y: auto;*/
+    font-family: 'Raleway', serif;
+    /*height: 100%;*/
+    background-color: #111;
+  }
+
+  .footer p {
+    width: 95%;
+    color: #E0E0E0;
+    float: none;
+    margin: auto;
+    /*text-align: center;*/
+    /*font-size: 2rem;*/
+    /*margin: 0 auto;*/
+    height: 100%;
+    padding: 0;
+    /*vertical-align: middle;*/
+    line-height: 6rem;
+  }
+
+}
+
+/* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 600px) { 
+  #menu, #menuspacer {
+    display: none;
+  }
+
+  #page {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    margin: auto;
+  }
+
+  #main { 
+    max-width: 100%;
+    width: 95%;
+    padding-right: 0px;
+    margin: auto;
+  }
+
+  article {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+  }
+  
+  .header {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .post {
+    width: 100%;
+    max-width: 100%;
+    float: none;
+  }
+
+  .header h1 { 
+    margin-left: 0px;
+  }
+  
+  .header h2 { 
+    margin-left: 0px;
+  }
+
+  .post-end-hr {
+    display: block;
+    width: 10%;
+    margin: 0 auto 1.4rem auto;   display: block;
+    position: relative;
+    padding: 0;
+    /*margin: 8px auto;*/
+    height: 0;
+    /*width: 100%;*/
+    max-height: 0;
+    font-size: 1px;
+    line-height: 0;
+    clear: both;
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  .post-meta-data {
+    width: 100%;
+    padding-right: 0px;
+    font-size: .7rem;
+    line-height: 1.15rem;
+    float: none;
+    /*
+       margin-left: 0pt;
+     margin-right: 0pt;*/
+    padding-top: 0;
+    padding-bottom: 1rem;
+  }
+  
+  .post-date { 
+    font-size: .9rem;
+    padding-bottom: .7rem; 
+  }
+  
+  p, footer { 
+    width: 100%; 
+    max-width: 100%; 
+  }
+  
+  pre.code { width: 97%; }
+
+  ul { width: 85%; }
+  
+  figure { 
+    max-width: 100%;
+    width: 100%;
+    margin: auto;
+  }
+  
+  figcaption, figure.fullwidth figcaption { margin-right: 0%;
+                                            max-width: none; }
+  blockquote { 
+    margin-right: 0; 
+    width: 90%;
+    margin-left: 4%;
+    /*margin-right: 4%; */
+  }
+
+  blockquote p {
+    width: 100%;
+  }
+  
+  /*blockquote footer { width: 100%; }*/
+  
+  label.margin-toggle:not(.sidenote-number) { display: inline; }
+                            
+
+  .sidenote, .marginnote { 
+    width: 92%;
+    display: none;
+    width: 0px;
+
+  }
+  
+  .margin-toggle:checked + .sidenote,
+  .margin-toggle:checked + .marginnote { 
+    display: block;
+    float: left;
+    clear: both;
+    width: 92%;
+    margin: 1rem 20px;
+    vertical-align: baseline;
+    position: relative; }
+  
+  label { cursor: pointer; }
+  
+  div.table-wrapper, table { width: 85%; }
+  
+  img { width: 100%; } 
+
+  .footer {
+    position: relative;
+    width: 100%; 
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto;
+    font-family: 'Raleway', serif;
+    /*height: 100%;*/
+    background-color: #111;
+  }
+
+  .footer p {
+    width: 95%;
+    height: 100%;
+    line-height: 6rem;
+    color: #E0E0E0;
+    float: none;
+    margin: auto;
+    padding: 0;
+    /*text-align: center;*/
+    /*font-size: 2rem;*/
+    /*margin: 0 auto;*/
+  }
+
+}
+

@@ -1,0 +1,7 @@
+<figure class="fullwidth">
+  <img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}">
+  <figcaption>{{- markdownify .Inner -}}</figcaption> 
+  <label for="{{ .Get "name" }}" class="margin-toggle">⊕</label>
+  <input type="checkbox" id="{{ .Get "name" }}" class="margin-toggle">
+  <span class="marginnote">{{- markdownify .Inner -}}</span>
+</figure>

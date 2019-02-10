@@ -1,0 +1,19 @@
+{{ if or (.Prev) (.Next) }}
+<nav class="pagination" role="pagination">
+    <p class="footer center">
+      {{ if .NextInSection }}
+      <a class="nav_left" href="{{ .NextInSection.Permalink }}">&lt;</a>
+      {{ else }}
+        <a class="nav_left" href="{{(index (last 1 (where .Site.RegularPages "Section" .Section)) 0).Permalink}}">&gt;&gt;</a>
+      {{ end }}
+
+      <a class="nav_center" href="{{(.Site.GetPage "section" .Section).Permalink}}">{{default (.Site.GetPage "section" .Section).Title  (.Site.GetPage "section" .Section).Params.short_title }}</a>
+      
+      {{ if .PrevInSection  }}
+      <a class="nav_right" href="{{ .PrevInSection.Permalink }}">&gt;</a>
+      {{ else }}
+        <a class="nav_right" href="{{(index (first 1 (where .Site.RegularPages "Section" .Section)) 0).Permalink}}">&lt;&lt;</a>
+      {{ end }}
+    </p>
+</nav>
+{{ end }}

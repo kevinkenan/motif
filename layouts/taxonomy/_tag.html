@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" class="taxonomy_tags.html">
+  {{ partial "head.html" . }}
+  <body>
+    <div id="page">
+      <div id="main">
+        {{ partial "header.html" . }}
+        <section class="toc">
+          {{$title := index ($.Site.GetPage "taxonomyTerm" "tags").Params.corrected_tags (urlize .Title)}}
+          <h2>Tag: {{default .Title $title}}</h2>
+          {{- .Content -}}
+          {{ range .Data.Pages.GroupBy "Section" }}
+            {{ if eq .Key "blog" }}
+              <h3>Blog Posts</h3>
+                <ul>
+                    {{ range (where .Pages "Section" "blog") }}
+                      <li><a href="{{ .Permalink }}">{{ .Title }}</a> <span class="chron-date">{{ .Date.Format "January 2, 2006" }}</span></li>
+                    {{ end }}
+                </ul>
+            {{else}}
+              <h3>{{ ($.Site.GetPage "section" .Key).Title }}</h3>
+              <ul>
+                  {{ range .Pages }}
+                  <li>
+                  <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="chron-date">{{ .Date.Format "January 2, 2006" }}</span>
+                  </li>
+                  {{ end }}
+              </ul>
+            {{ end }}
+          {{ end }}
+        </section>
+      </div>
+    </div>  
+    {{ partial "footer.html" . }}
+  </body>
+</html>

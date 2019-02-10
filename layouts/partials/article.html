@@ -1,0 +1,49 @@
+<article>
+  <h2 class="center"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+  <div class="post">
+    {{ .Content }}
+    <div class=“comment”>
+      Comments Here
+      {{ template "_internal/disqus.html" . }}
+    </div>
+  </div>
+  <div class="post-meta-data">
+    <hr class="post-end-hr"/>
+
+    <div class="post-section">
+      <a href="/{{.Section}}">{{default (.Site.GetPage "section" .Section).Title  (.Site.GetPage "section" .Section).Params.short_title }}</a>
+    </div>
+
+    <div class="post-date">
+      <time>{{ with .Site.Params.dateFormat }}{{ $.Date.Format . }}{{ else }}{{ .Date.Format "02 Jan 2006, 15:04" }}{{ end }}</time><br>
+    </div>
+
+    {{ $baseUrl := .Site.BaseURL }}
+
+    {{ if isset .Params "topics" }}
+    {{ $count := len .Params.topics }}
+    {{ if gt $count 0 }}
+    <div>
+      <ul>
+      {{ range $k, $v := .Params.topics }}
+        <li><a class="post-taxonomy-topic" href="{{ $baseUrl }}topics/{{ . | urlize }}">{{ . }}</a>{{ if lt $k (sub $count 1) }}&nbsp;&#47;{{ end }}</li>
+      {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    {{ end }}
+
+    {{ if isset .Params "tags" }}
+    {{ $count := len .Params.tags }}
+    {{ if gt $count 0 }}
+    <div>
+      <ul class="tag-list">
+      {{ range $k, $v := sort .Params.tags }}
+        <li><i><a class="post-taxonomy-tag" href="{{ $baseUrl }}tags/{{ . | urlize }}">{{ . }}</a>{{ if lt $k (sub $count 1) }} {{ end }}</i></li>
+      {{ end }}
+    </ul>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+</article>

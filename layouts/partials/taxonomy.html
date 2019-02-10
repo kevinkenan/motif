@@ -1,0 +1,27 @@
+<article>
+  {{$title := index ($.Site.GetPage "taxonomyTerm" "tags").Params.corrected_tags (urlize .Title)}}
+  <h2 class="center">Tag: {{default .Title $title}}</h2>
+  <div class="post">
+  {{- .Content -}}
+  {{ range .Data.Pages.GroupBy "Section" }}
+    {{ if eq .Key "blog" }}
+      <h3>Blog Posts</h3>
+        <ul class="textlist">
+            {{ range (where .Pages "Section" "blog") }}
+              <li><a href="{{ .Permalink }}">{{ .Title }}</a> <span class="chron-date">{{ .Date.Format "January 2, 2006" }}</span></li>
+            {{ end }}
+        </ul>
+    {{else}}
+      <h3>{{ ($.Site.GetPage "section" .Key).Title }}</h3>
+      <ul class="textlist">
+          {{ range .Pages }}
+          <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="chron-date">{{ .Date.Format "January 2, 2006" }}</span>
+          </li>
+          {{ end }}
+      </ul>
+    {{ end }}
+  {{ end }}
+  </div>
+  <div class="post-meta-data"> </div>
+</article>

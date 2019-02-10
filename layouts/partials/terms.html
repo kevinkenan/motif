@@ -1,0 +1,22 @@
+<article>
+  <h2 class="center">Tag Index</h2>
+  <div class="post">
+    {{$.Scratch.Set "index_char" (slicestr (index (first 1 .Data.Terms.Alphabetical) 0).Name 0 1 | upper)}}
+    <ul class="textlist">
+    <p class="term_group">{{$.Scratch.Get "index_char"}}</p>
+    {{- range $k, $v := .Data.Terms.Alphabetical -}}
+      {{$.Scratch.Set "curr_char" ((slicestr $v.Name 0 1) | upper)}}
+      {{if ne ($.Scratch.Get "index_char") ($.Scratch.Get "curr_char")}}
+        {{ $.Scratch.Set "index_char" ($.Scratch.Get "curr_char")}}
+    </ul>
+    <p class="term_group">{{$.Scratch.Get "index_char"}}</p>
+    <ul class="textlist">
+      {{end}}
+      {{$default_title := ($.Site.GetPage "taxonomyTerm" (printf "tags/%s" $v.Name)).Title}}
+      {{$title := $.Param (printf "corrected_tags.%s" $default_title)}}
+      <li><a class="tag" href="{{ .Name }}">{{default $default_title $title}}</a><span class="tag_count">{{.Count}}</span></li>
+    {{- end -}}
+    </ul>
+  </div>
+  <div class="post-meta-data"> </div>
+</article>
