@@ -2,9 +2,9 @@
   <h2 class="center"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
   <div class="post">
     {{ .Content }}
-    <div class="comment">
-      {{ template "_internal/disqus.html" . }}
-    </div>
+  </div>
+  <div class="comment">
+    {{ template "_internal/disqus.html" . }}
   </div>
   <div class="post-meta-data">
     <hr class="post-end-hr"/>

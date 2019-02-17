@@ -1,4 +1,4 @@
-<figure class="fullwidth">
+<figure class="{{if isset .Params "top" }}topfullwidth{{ else }}fullwidth{{ end }}">
   <img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}">
   <figcaption>{{- markdownify .Inner -}}</figcaption> 
   <label for="{{ .Get "name" }}" class="margin-toggle">⊕</label>
