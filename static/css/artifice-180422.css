@@ -778,6 +778,11 @@ div.post-date {
 
 /*@media (min-width: 900px) and (max-width: 1030px) { */
 @media (max-width: 1030px) { 
+
+  html { 
+    font-size: 24px; 
+  }
+
   #menu, #menuspacer {
     display: none;
   }
