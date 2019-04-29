@@ -190,7 +190,7 @@ footer {
   float: right;
   clear: right;
   width: 230px;
-  margin-top: .405em;
+  /*margin-top: .405em;*/
   margin-bottom: 0;
   margin-right: -255px;
   vertical-align: baseline;
