@@ -8,9 +8,18 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
+{{- $copyCmd := "" -}}
+{{- if eq .Name "excerpt" -}}
+  {{- $copyCmd = "copyExcerpt()" -}}
+{{ else if eq .Name "codelisting" -}}
+  {{- $copyCmd = "copyCodelisting()" -}}
+{{ else if eq .Name "cli" -}}
+  {{- $copyCmd = "copyCLI()" -}}
+{{ end }}
+{{- with not $copyCmd -}}{{ $copy = false }}{{- end -}}
 {{- if $copy -}}
 <div class="copy">
-<button class="copybtn">
+<button class="copybtn" onclick="{{ $copyCmd | safeJS }}">
 copy{{ if eq .Name "cli" }} input{{ end }}
 </button>
 </div>
