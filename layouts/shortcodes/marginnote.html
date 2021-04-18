@@ -1,3 +1,5 @@
 <label for="{{ .Get 0 }}" class="margin-toggle">&#8853;</label>
-<input type="checkbox" id="{{ .Get 0 }}" class="margin-toggle"/>
-<span class="marginnote">{{markdownify .Inner }}</span>
+<input type="checkbox" 
+       id="{{ .Get 0 }}" 
+       class="margin-toggle"/>
+<span class="marginnote {{ .Get 1 }}">{{markdownify .Inner }}</span>

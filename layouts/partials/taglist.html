@@ -1,0 +1,13 @@
+{{- $baseUrl := .Site.BaseURL }}
+{{- if isset .Params "tags" }}
+<div class="tags">
+<div class="label">TAGS</div>
+<ul class="textlist">
+  {{- $tcount := len .Params.tags }}
+  {{- $tcount = sub (len .Params.tags) 1 }}
+  {{- range $k, $v := sort .Params.tags }}
+<li><a href="{{ $baseUrl }}tags/{{ . | urlize }}">{{ . }}</a></li>
+  {{- end }}
+</ul>
+</div>
+{{- end }}

@@ -1,0 +1,11 @@
+<figure class="file-excerpt">
+{{- with (.Get "caption" | default (.Get 0)) -}}
+<figcaption>
+  {{- . | $.Page.RenderString -}}
+</figcaption>
+{{- end -}}
+<pre class="file">
+{{- .Inner | htmlUnescape -}}
+</pre>
+{{- partial "copybutton" . -}}
+</figure>

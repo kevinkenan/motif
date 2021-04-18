@@ -1,0 +1,15 @@
+<figure class="dirlisting">
+{{- with (.Get "caption" | default (.Get 0)) -}}
+<figcaption>
+  {{- . | $.Page.RenderString -}}
+</figcaption>
+{{- end -}}
+<pre>
+{{- $s := .Inner -}}
+{{- $s = strings.ReplaceRE "^\n(.*)/" "<i>$1</i>" $s -}}
+{{- $s = strings.ReplaceRE "([ │─├└ ]+)" "<span class=\"diagram\">$1</span>" $s -}}
+{{- $s = strings.ReplaceRE "</span>(.*)/" "</span><i>$1</i>" $s -}}
+{{- $s = strings.ReplaceRE "</span>(.*)\\*" "</span><b>$1</b>" $s -}}
+{{- $s |safeHTML -}}
+</pre>
+</figure>

@@ -1,0 +1,20 @@
+{{- $width := "575px" -}}
+{{- $height := .Get "height" | default (.Get 2) -}}
+{{- $capoffset := 0 -}}
+{{- $class :=  "iframe-wrapper" -}}
+{{- if eq (.Get "width" | default (.Get 2)) "wide" -}}
+  {{- $width = "830px" -}}
+  {{- $class = "iframe-wrapper wide" -}}
+  {{- $capoffset = .Get "height" | default (.Get 2) -}}
+{{- end -}}
+<figure class="{{ $class }}" style="height: {{ $height }}">
+{{- if .Inner }}
+<figcaption style="margin-top: {{ $capoffset }}">
+{{ .Inner | markdownify }}
+</figcaption>
+{{- end }}
+<iframe src="{{ .Get "src"  }}" 
+        title="{{ .Get "title" }}"
+        width={{ $width }}
+        height={{ $height }}></iframe>
+</figure>

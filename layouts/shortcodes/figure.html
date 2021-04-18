@@ -1,7 +1,4 @@
-<figure class="body-fig">
+<figure>
   <figcaption>{{ markdownify .Inner }}</figcaption>
-  <img src="{{ .Get "src" }}" alt="Hubble Pinwheel">
-  <label for="{{ .Get "name" }}" class="margin-toggle">⊕</label>
-  <input type="checkbox" id="{{ .Get "name" }}" class="margin-toggle">
-  <span class="marginnote">{{ markdownify .Inner }}</span>
+  <img src="{{ .Get "src" | default (.Get 0) }}" alt="{{ .Get "alt" | default (.Get 1) }}">
 </figure>

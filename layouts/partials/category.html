@@ -1,0 +1,13 @@
+{{- $baseUrl := .Site.BaseURL }}
+{{- if isset .Params "categories" }}
+<div class="tags">
+{{- $label := cond (eq (len .Params.categories) 1) "CATEGORY" "CATEGORIES" -}}
+<div class="label">{{ $label }}</div>
+<ul class="textlist">
+{{- range .Params.categories -}}
+  {{- $title := . -}}
+<li><a href="{{ $baseUrl }}categories/{{ . | urlize }}">{{ $title }}</a></li>
+{{- end }}
+</ul>
+</div>
+{{- end }}

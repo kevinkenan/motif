@@ -1,0 +1,6 @@
+<figure class="margin">
+<img src="{{ .Get "src" | default (.Get 0) }}" alt="{{ default "" (.Get "alt" | default 1) }}">
+<figcaption>
+{{ .Inner | markdownify }}
+</figcaption>
+</figure>

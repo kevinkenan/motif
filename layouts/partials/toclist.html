@@ -1,0 +1,19 @@
+{{- $baseUrl := .Site.BaseURL }}
+{{- if .Params.toc }}
+<div class="toc">
+<div class="label">CONTENTS</div>
+{{ .TableOfContents }}
+</div>
+{{- end }}
+{{- if isset .Params "topics" }}
+{{- $count := len .Params.topics }}
+{{- if gt $count 0 }}
+<div>
+<ul>
+{{ range $k, $v := .Params.topics }}
+<li><a href="{{ $baseUrl }}topics/{{ . | urlize }}">{{ . }}</a>{{ if lt $k (sub $count 1) }}&nbsp;&#47;{{ end }}</li>
+{{ end }}
+</ul>
+</div>
+{{- end }}
+{{- end }}

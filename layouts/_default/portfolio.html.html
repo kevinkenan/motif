@@ -1,0 +1,20 @@
+{{ define "article" }}
+<article data-template="portfolio.html.html">
+<header>
+{{/*$title := index ($.Site.GetPage "taxonomyTerm" "tags").Params.corrected_tags (urlize .Title)*/}}
+{{- $title := "fixme" }}
+<h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+</header>
+<section>
+{{- with .Content -}}
+{{- . -}}
+{{- else -}}
+<h5 class="bigger" id="projects">Projects</h5>
+{{ partial "listprojects" . }}
+{{- end -}}
+</section>
+<footer>
+{{ partial "seclist" . }}
+</footer>
+</article>
+{{ end -}}

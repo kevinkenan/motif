@@ -1,4 +1,0 @@
-{{$default_title := ($.Site.GetPage "taxonomyTerm" (printf "tags/%s" .Name)).Title}}
-{{$title := $.Param (printf "corrected_tags.%s" $default_title)}}
-{{$title := cond (gt (countrunes $title) 0) $title $default_title}}
-{{$title}}

@@ -1,1 +1,5 @@
-<span class="sc">{{ markdownify (.Get 0) }}</span>
+{{ if isset .Params 0 -}}
+<span class="sc" style="letter-spacing: {{ div (.Get 0) 100.0 }}em;">{{ .Inner | markdownify }}</span>
+{{- else -}}
+<span class="sc">{{ .Inner | markdownify }}</span>
+{{- end }}

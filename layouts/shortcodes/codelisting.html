@@ -1,0 +1,21 @@
+{{ $lang := default "plaintext" (.Get 0) -}}
+{{ $caption := default "" (.Get 1) }}
+{{ $lstart := print "linenostart=" (default "1" (.Get 2)) -}}
+{{ $opts := default "" (.Get 3) -}}
+{{ if and .IsNamedParams }}
+	{{ $lang = default "plaintext" (.Get "lang") -}}
+	{{ $caption = default "" (.Get "caption") }}
+	{{ $lstart = print "linenostart=" (default "1" (.Get "firstline")) -}}
+	{{ $opts := default "" (.Get "opts") -}}
+{{ end }}
+{{ $opts = cond (gt (len $opts) 0) (print "," (.Get "opts")) "" -}}
+{{ $opts = print "linenos=table," $lstart $opts -}}
+<figure class="codelisting">
+{{- if gt (len $caption) 0 }}
+<figcaption>
+  {{- $caption | .Page.RenderString -}}
+</figcaption>
+{{- end -}}
+{{ highlight (trim .Inner "\n") $lang $opts -}}
+{{- partial "copybutton" . -}}
+</figure>

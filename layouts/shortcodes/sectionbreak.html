@@ -1,1 +1,14 @@
-<p class="sbglyph" align="center"> &#x2767; </p>
+{{- if .IsNamedParams -}}
+  {{- with .Get "minor" -}}
+<hr class="minorbreak" style="margin-bottom: {{ . }};">
+  {{ end -}}
+  {{- with .Get "major" -}}
+<hr class="majorbreak" style="margin-top: {{ . }}; margin-bottom: {{ . }};">
+  {{ end -}}
+{{- else -}}
+  {{- if eq (.Get 0 | default "minor") "major" -}}
+<hr class="majorbreak">
+  {{ else -}}
+<hr class="minorbreak">
+  {{ end -}}
+{{- end -}}

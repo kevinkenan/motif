@@ -1,0 +1,17 @@
+{{ define "article" -}}
+<article data-template="category.terms.html">
+<header><h2><a href="{{ .Permalink }}">Categories</a></h2>
+</header>
+<section>
+{{ $cur_idx := "" -}}
+{{ $close_tags := "" -}}
+<ul class="textlist">
+{{ range .Site.Taxonomies.categories -}}
+<li><a class="tag" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a><span class="tag_count">{{ .Count }}</span></li>
+{{ end -}}
+</ul>
+</div>
+</section>
+<footer></footer>
+</article>
+{{ end -}}

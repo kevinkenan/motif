@@ -1,0 +1,20 @@
+{{- define "article" -}}
+{{- $title := default .Title .Params.short_title -}}
+<article data-template="list.contents.html">
+<header>
+<h2><a href="{{ .Permalink }}/contents.html">Contents: {{ $title }}</a></h2>
+</header>
+<section class="contents">
+{{ range .Pages -}}
+<h3><a href="{{ .Permalink }}">{{ .Title }}</a> <span class="chron-date">{{ .Date.Format "January 2, 2006" }}</span></h3>
+{{ replaceRE "href=\"#" (print "href=\"" .Permalink "#") .TableOfContents | safeHTML -}}
+{{ end -}}
+</section>
+<footer>
+<hr>
+<div class="section-title">
+<a href="{{.Permalink}}">{{ $title }}</a>
+</div>
+</footer>
+</article>
+{{ end -}}

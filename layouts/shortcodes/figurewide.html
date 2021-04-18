@@ -1,0 +1,4 @@
+<figure class="{{if isset .Params "top" }}topfullwidth{{ else }}fullwidth{{ end }}">
+  <img src="{{ .Get "src" | default (.Get 0) }}" alt="{{ default "" (.Get "alt" | default 1) }}">
+  <figcaption>{{- markdownify .Inner -}}</figcaption> 
+</figure>

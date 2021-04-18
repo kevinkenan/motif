@@ -1,0 +1,19 @@
+<table class="pagelist norule">
+<thead>
+<tr>
+<th class="pagename"></th>
+<th class="pagedescription"></th>
+</tr>
+</thead>
+<tbody>
+{{- range .Page.Pages -}}
+  {{- with .Page -}}
+    {{- $title := default .Title .Params.short_title -}}
+<tr>
+<td class="pagename"><a href="{{ .RelPermalink }}">{{ $title }}</a></td>
+<td class="pagedescription">{{ .Description | .RenderString }}</td>
+</tr>
+  {{- end -}}
+{{- end -}}
+</tbody>
+</table>

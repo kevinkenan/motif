@@ -1,0 +1,11 @@
+<figure class="cli">
+{{- with (.Get "caption" | default (.Get 0)) -}}
+<figcaption>
+  {{- . | $.Page.RenderString -}}
+</figcaption>
+{{- end -}}
+<pre class="code">
+{{- .Inner -}}
+</pre>
+{{- partial "copybutton" . -}}
+</figure>

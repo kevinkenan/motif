@@ -1,3 +1,14 @@
-{{- range first 1 (where .Site.RegularPages "Section" (.Get 0)) -}}
-  <a class="mostrecent" href="{{ .RelPermalink }}">{{ .Title }}</a>
+{{- $s := "blog" -}}
+{{- $c := "" -}}
+{{- if eq (len .Params) 2 -}}
+  {{- $s = .Get 0 -}}
+  {{- $c = .Get 1 -}}
+  {{- $blogpages := where .Site.Pages.ByDate.Reverse "Section" $s -}}
+  {{- range first 1 (where $blogpages "Params.categories" "intersect" (slice $c)) -}}
+<a class="mostrecent" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{- end -}}
+{{- else -}}
+  {{- range first 1 (where .Site.RegularPages "Section" (.Get 0)) -}}
+<a class="mostrecent" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{- end -}}
 {{- end -}}

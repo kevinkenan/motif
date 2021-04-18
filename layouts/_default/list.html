@@ -1,17 +1,32 @@
-<!DOCTYPE html>
-<html lang="en" class="list_default">
-  {{ partial "head.html" . }}
-  <body>
-    {{ partial "header.html" . }}
-    <main>
-      <div class="content">
-      {{ partial "list.html" . }}
-      </div>
-    </main>
-    <div class="flex_space"></div>
-    {{ partial "footer.html" . }}
-  </body>
-</html>
+{{ define "article" }}
+<article data-template="list.html">
+<header>
+<h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+</header>
+<section>
+{{ .Content }}
+{{- if eq .Section "blog" -}}
+{{- partial "blogposts" . -}}
+{{- end -}}
+</section>
+<footer>
+<hr>
+{{ partial "seclist" . }}
+{{ partial "category" . }}
+{{ partial "toclist" . }}
+{{ partial "taglist" . }}
+</footer>
+</article>
+{{ if and (eq (.Type | lower) "project") (not (eq .Section "blog")) }}
+<nav>
+<p>
+<a class="nav_left" href="{{ .Permalink }}contents.html"></a>
+<a class="nav_center" href="{{ .Permalink }}contents.html">DETAILED CONTENTS</a>
+<a class="nav_right" href="{{ .Permalink }}contents.html"></a>
+</p>
+</nav>
+{{ end }}
+{{ end }}
 
 
 

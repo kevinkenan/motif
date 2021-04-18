@@ -1,0 +1,16 @@
+<table class="pagelist norule">
+<thead>
+<tr>
+<th class="pagename"></th>
+<th class="pagedescription"></th>
+</tr>
+</thead>
+<tbody>
+{{ range .Page.RegularPages -}}
+<tr>
+<td class="pagename"><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></td>
+<td class="pagedescription">{{ .Page.Description | .Page.RenderString }}</td>
+</tr>
+{{ end -}}
+</tbody>
+</table>

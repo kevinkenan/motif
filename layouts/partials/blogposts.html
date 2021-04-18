@@ -1,0 +1,7 @@
+<ul class="textlist">
+  {{ range .Pages }}
+<li><a href="{{ .Permalink }}">{{ .Title }}</a> 
+  <span class="chron-date">{{ .Date.Format "January 2, 2006" }}</span>
+  {{- with .Params.categories }}{{- range . }}<a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}"><span class="category">{{ . }}{{ end }}</span></a>{{ end }}</li>
+  {{ end }}
+</ul>

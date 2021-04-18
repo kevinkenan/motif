@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="{{ .Kind }} {{ .Type }}">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+{{ $style := resources.Get "css/motif.scss" | resources.ToCSS -}}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+{{ $syntax_hl := resources.Get "css/syntax.scss" | resources.ToCSS -}}
+<link rel="stylesheet" href="{{ $syntax_hl.RelPermalink }}">
+<link rel="stylesheet" href="https://use.typekit.net/naw0cqv.css">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+{{ with .Page.Params.projectStylesheets -}}
+  {{- range . -}}
+<link rel="stylesheet" href="{{ . }}">
+{{ end -}}
+{{- end -}}
+{{ with .Page.Params.stylesheets -}}
+  {{- range . -}}
+<link rel="stylesheet" href="{{ . }}">
+{{ end -}}
+{{- end -}}
+<style>
+{{- with .Page.Params.projectStyle -}}
+{{ . | safeCSS -}}
+{{ end -}}
+{{- with .Page.Params.style -}}
+{{ . | safeCSS -}}
+{{ end -}}
+</style>
+</head>
+<body>
+<header>
+<h1><a href="/">{{ .Site.Title | upper }}</a></h1>
+</header>
+<main>
+{{- block "article" . -}}{{- end -}}
+</main>
+<div class="box-flex-space"></div>
+<footer>
+<nav>
+<p>
+<a class="nav_left" href="/">home</a>
+<a class="nav_center" href="/tags/">tags</a>
+<a class="nav_right" href="/about">about</a>
+</p>
+</nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{{ define "article" }}
+<article data-template="category.html.html">
+<header>
+{{/*$title := index ($.Site.GetPage "taxonomyTerm" "tags").Params.corrected_tags (urlize .Title)*/}}
+{{- $title := "fixme" }}
+<h2><a href="{{ .Permalink }}">Category: {{ .Title }}</a></h2>
+</header>
+<section>
+{{- .Content -}}
+{{ range .Data.Pages.GroupBy "Section" }}
+{{ if eq .Key "blog" }}
+<h3>Blog Posts</h3>
+<ul class="textlist">
+{{ range (where .Pages "Section" "blog") }}
+<li><a href="{{ .Permalink }}">{{ .Title }}</a> <span class="chron-date">{{ .Date.Format "January 2, 2006" }}</span></li>
+{{ end }}
+</ul>
+{{else}}
+{{ with ($.Site.GetPage "section" .Key) }}
+<h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+{{ end }}
+<ul class="textlist">
+{{ range .Pages }}
+<li>
+<a href="{{ .Permalink }}">{{ .Title }}</a> <span class="chron-date">{{ .Date.Format "January 2, 2006" }}</span>
+</li>
+{{ end }}
+</ul>
+{{ end }}
+{{ end }}
+</section>
+<footer></footer>
+</article>
+{{ end -}}

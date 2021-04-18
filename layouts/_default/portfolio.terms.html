@@ -1,0 +1,17 @@
+{{ define "article" -}}
+<article data-template="portfolio.terms.html">
+<header><h2><a href="{{ .Permalink }}">Project Portfolios</a></h2>
+</header>
+<section>
+{{ $cur_idx := "" -}}
+{{ $close_tags := "" -}}
+<ul class="textlist">
+{{ range .Site.Taxonomies.portfolios -}}
+<li><a class="tag" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a><span class="tag_count">{{ .Count }}</span></li>
+{{ end -}}
+</ul>
+</div>
+</section>
+<footer></footer>
+</article>
+{{ end -}}

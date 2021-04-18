@@ -1,0 +1,17 @@
+{{- $copy := default false .Page.Params.copybutton -}}
+{{- if .IsNamedParams -}}
+  {{- if (isset .Params "copybutton") -}}
+    {{- if eq (.Get "copybutton") "false" -}}
+      {{- $copy = false -}}
+    {{- else -}}
+      {{- $copy = true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $copy -}}
+<div class="copy">
+<button class="copybtn">
+copy{{ if eq .Name "cli" }} input{{ end }}
+</button>
+</div>
+{{- end -}}

@@ -1,0 +1,24 @@
+{{- $title := default .Parent.CurrentSection.Title .Parent.CurrentSection.Params.short_title -}}
+{{- $url := .Parent.Permalink -}}
+{{- $date := true -}}
+{{- with .Params.portfolios -}}
+  {{- $title = index . 0 -}}
+  {{- $url = print "/portfolios/" $title | urlize -}}
+  {{- $date = false -}}
+{{- else -}}
+  {{- if or (eq .CurrentSection.Type "portfolios") (.Parent.IsHome) -}}
+    {{- $title = default "Home" $.Site.Params.topParent -}}
+    {{- $url = "/" -}}
+    {{- $date = false -}}
+  {{- end -}}
+{{- end -}}
+<div class="section-title-block">
+<div class="section-title show">
+<a href="{{ $url }}">{{ $title }}</a>
+</div>
+{{- if $date -}}
+<div class="date">
+<time>{{ with .Site.Params.dateFormat }}{{ $.Date.Format . }}{{ else }}{{ .Date.Format "02 Jan 2006, 15:04" }}{{ end }}</time><br>
+</div>
+{{- end -}}
+</div>

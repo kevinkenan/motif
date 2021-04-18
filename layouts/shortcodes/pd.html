@@ -1,0 +1,5 @@
+{{- if gt (len .Params) 0 -}}
+<span style="margin-right: {{ div (.Get 0) 100.0 }}em;"></span>
+{{- else -}}
+<span class="padding"></span>
+{{- end -}}

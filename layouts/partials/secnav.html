@@ -1,0 +1,43 @@
+{{ $title := default .CurrentSection.Title .CurrentSection.Params.short_title -}}
+{{ $titleLink := print .Parent.Permalink "contents.html" -}}
+{{ $left := "" -}}
+{{ $lefticon := "" -}}
+{{ $right := "" -}}
+{{ $righticon := "" -}}
+{{ if eq .Section "blog" -}}
+  {{ $titleLink = "/blog" -}}
+  {{ if .PrevInSection -}}
+    {{ $left = .PrevInSection.Permalink -}}
+    {{ $lefticon = "<" -}}
+  {{ else -}}
+  	{{ $left = (index (first 1 .CurrentSection.Pages) 0).Permalink -}}
+    {{ $lefticon = ">>" -}}
+  {{ end -}}
+  {{ if .NextInSection -}}
+  	{{ $right = .NextInSection.Permalink -}}
+  	{{ $righticon = ">" -}}
+  {{ else -}}
+    {{ $right = (index (last 1 .CurrentSection.Pages) 0).Permalink -}}
+    {{ $righticon = "<<" -}}
+  {{ end -}}
+{{ else -}}
+  {{ if .NextInSection -}}
+    {{ $left = .NextInSection.Permalink -}}
+    {{ $lefticon = "<" -}}
+  {{ else -}}
+  	{{ $left = (index (last 1 .CurrentSection.Pages) 0).Permalink -}}
+    {{ $lefticon = ">>" -}}
+  {{ end -}}
+  {{- if .PrevInSection -}}
+    {{ $right = .PrevInSection.Permalink -}}
+  	{{ $righticon = ">" -}}
+  {{ else -}}
+    {{ $right = (index (first 1 .CurrentSection.Pages) 0).Permalink -}}
+    {{ $righticon = "<<" -}}
+  {{ end -}}
+{{ end -}}
+<p>
+<a class="nav_left" href="{{ $left }}">{{ $lefticon }}</a>
+<a class="nav_center" href="{{ $titleLink }}">{{ $title | upper }}</a>
+<a class="nav_right" href="{{ $right }}">{{ $righticon }}</a>
+</p>

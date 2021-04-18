@@ -1,0 +1,7 @@
+{{- if isset .Params 0 -}}
+<aside style="margin-top: {{ (.Get 0) }}rem;">
+{{- else -}}
+<aside>
+{{- end -}}
+{{ .Inner | safeHTML | markdownify }}
+</aside>

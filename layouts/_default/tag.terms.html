@@ -1,0 +1,25 @@
+{{ define "article" -}}
+<article data-template="taxonomy.html">
+<header><h2><a href="{{ .Permalink }}">Tag Index</a></h2>
+</header>
+<section>
+{{ $cur_idx := "" -}}
+{{ $close_tags := "" -}}
+{{ range .Site.Taxonomies.tags -}}
+  {{ $new_idx := (first 1 .Page.Title) | upper -}}
+  {{ if ne $new_idx $cur_idx -}}
+    {{ $cur_idx = $new_idx -}}
+    {{ safeHTML $close_tags -}}
+    {{ $close_tags = "</ul>\n</div>" -}}
+<div class="taglist">
+<h3>{{ $cur_idx }}</h3>
+<ul class="textlist">
+  {{ end -}}
+<li><a class="tag" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a><span class="tag_count">{{ .Count }}</span></li>
+{{ end -}}
+</ul>
+</div>
+</section>
+<footer></footer>
+</article>
+{{ end -}}
