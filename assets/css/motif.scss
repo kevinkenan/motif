@@ -386,7 +386,6 @@ body > main > article {
   overflow: auto; /* clearfix */
   font-size: $font-size;
   margin: auto;
-  margin-bottom: $font-size;
   clear: both;
 
   h1, h2, h3, h4, h5, h6 {
@@ -1489,16 +1488,19 @@ body > main > article table {
   }
 
   td, th {
-    padding-right: .75em;
+    padding-right: .375em;
+    padding-right: .375em;
     vertical-align: baseline;
   }
 
-  &.lgpad td, th {
-    padding-right: 1.5em;
+  &.lgpad td, &.lgpad th {
+    padding-right: .75em;
+    padding-left: .75em;
   }
 
-  &.nopad td, th {
+  &.nopad td, &.nopad th {
     padding-right: 0;
+    padding-left: 0;
   }
 
   thead {
