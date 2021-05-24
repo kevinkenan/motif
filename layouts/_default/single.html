@@ -1,7 +1,11 @@
 {{ define "article" }}
 <article id="{{ .File.ContentBaseName }}" data-template="single.html">
 <header>
-<h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+{{ $title := .Title -}}
+{{ if eq .Parent.Type "project" -}}
+  {{ $title = print (.Parent.Params.short_title | default .Parent.Name)  ": " $title -}}
+{{ end -}}
+<h2><a href="{{ .Permalink }}">{{ $title }}</a></h2>
 </header>
 <section>
 {{ .Content }}
