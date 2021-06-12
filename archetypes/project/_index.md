@@ -1,3 +1,4 @@
+---
 {{- $type := "project" -}}
 {{- $header := "Pages" -}}
 {{- $section := replaceRE "/.*content/([^/]+).*" "$1" .File.Dir -}}
