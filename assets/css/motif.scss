@@ -79,7 +79,8 @@ $lg-window-right-col: $lg-window-right-gutter + $lg-window-right-text-col; // 25
 $lg-window-main-col: $lg-window-text-col + $lg-window-right-col;
 $lg-window-full-width: $lg-window-left-col + $lg-window-main-col;
 
-$light: #FFFDFA;
+$light: #FFFEFE;
+// $light: #FFFDFA;
 $gray-faint: #f4f4f4;
 $gray-vlight: #e7e7e7;
 $gray-light: #ccc;
